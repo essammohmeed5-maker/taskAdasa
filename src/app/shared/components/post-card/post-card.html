@@ -1,0 +1,82 @@
+
+<article class="post-card">
+
+  <a
+    [routerLink]="['/blog', post.id]"
+    class="post-link"
+  >
+
+    <div class="post-image">
+
+      <img
+        [src]="post.image"
+        [alt]="post.title"
+      >
+
+      <div class="image-overlay"></div>
+
+    </div>
+
+    <div class="post-content">
+
+      <div class="post-meta">
+
+        <span class="category">
+          {{ post.category }}
+        </span>
+
+        <span class="read-time">
+          <i class="fa-regular fa-clock"></i>
+          {{ post.readTime }}
+        </span>
+
+        <span class="post-date">
+          <i class="fa-regular fa-calendar"></i>
+          {{ post.date }}
+        </span>
+
+      </div>
+
+      <h2>
+        {{ post.title }}
+      </h2>
+
+      <p>
+        {{ post.excerpt }}
+      </p>
+
+      <div class="post-footer">
+
+        <div class="author">
+
+          <img
+            [src]="post.author.avatar"
+            [alt]="post.author.name"
+          >
+
+          <div>
+            <strong>
+              {{ post.author.name }}
+            </strong>
+
+            <span>
+              {{ post.author.role }}
+            </span>
+          </div>
+
+        </div>
+
+        <span class="read-more">
+          اقرأ المقال
+
+          <i class="fa-solid fa-arrow-left"></i>
+        </span>
+
+      </div>
+
+    </div>
+
+  </a>
+
+</article>
+

@@ -1,0 +1,66 @@
+.shared-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 48px;
+  padding: 12px 24px;
+
+  border-radius: 25px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.shared-btn.primary {
+  color: #fff;
+  background: linear-gradient(to right, #f97316, #ea580c);
+  border: 1px solid transparent;
+}
+
+.shared-btn.secondary {
+  color: #fff;
+  background: #161616;
+  border: 1px solid #262626;
+}
+
+.shared-btn.outline {
+  color: #f97316;
+  background: transparent;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.shared-btn:hover {
+  transform: translateY(-2px);
+}
+
+.shared-btn.primary:hover {
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.2);
+}
+
+.shared-btn.secondary:hover {
+  background: #222;
+  border-color: #404040;
+}
+
+.shared-btn.outline:hover {
+  color: #fff;
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.shared-btn i {
+  color: inherit;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .shared-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,106 @@
+<section class="blog">
+  <section class="blog-hero">
+    <div class="blog-hero-grid"></div>
+
+    <div class="blog-hero-glow blog-hero-glow-orange"></div>
+    <div class="blog-hero-glow blog-hero-glow-yellow"></div>
+
+    <app-section-label text="مدونتنا"></app-section-label>
+      <h1>
+        استكشف
+        <span>مقالاتنا</span>
+      </h1>
+
+      <p>اكتشف الدروس والرؤى وأفضل الممارسات للتطوير الحديث</p>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="blog-filters">
+    <div class="blog-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="currentPage = 1"
+        placeholder="ابحث في المقالات..."
+      />
+    </div>
+
+    <div class="blog-categories">
+      <button
+        [class.active]="selectedCategory === ''"
+        (click)="selectedCategory = ''; currentPage = 1"
+      >
+        جميع المقالات
+      </button>
+
+      <button
+        [class.active]="selectedCategory === 'إضاءة'"
+        (click)="selectedCategory = 'إضاءة'; currentPage = 1"
+      >
+        إضاءة
+      </button>
+
+      <button
+        [class.active]="selectedCategory === 'بورتريه'"
+        (click)="selectedCategory = 'بورتريه'; currentPage = 1"
+      >
+        بورتريه
+      </button>
+
+      <button
+        [class.active]="selectedCategory === 'مناظر طبيعية'"
+        (click)="selectedCategory = 'مناظر طبيعية'; currentPage = 1"
+      >
+        مناظر طبيعية
+      </button>
+
+      <button
+        [class.active]="selectedCategory === 'تقنيات'"
+        (click)="selectedCategory = 'تقنيات'; currentPage = 1"
+      >
+        تقنيات
+      </button>
+
+      <button
+        [class.active]="selectedCategory === 'معدات'"
+        (click)="selectedCategory = 'معدات'; currentPage = 1"
+      >
+        معدات
+      </button>
+    </div>
+  </section>
+
+  <!-- Posts -->
+  <section class="blog-posts">
+    <div class="posts-header">
+      <div>
+        <span>عرض {{ filteredPosts.length }} مقالات</span>
+      </div>
+
+      <div class="view-buttons">
+        <button [class.active]="viewMode === 'grid'" (click)="setViewMode('grid')">
+          <i class="fa-solid fa-table-cells-large"></i>
+        </button>
+
+        <button [class.active]="viewMode === 'list'" (click)="setViewMode('list')">
+          <i class="fa-solid fa-list"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="posts-grid" [class.list-view]="viewMode === 'list'">
+      @for (post of paginatedPosts; track post.id) {
+        <app-post-card [post]="post" [viewMode]="viewMode"></app-post-card>
+      }
+    </div>
+
+    <app-page-navigation
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChange)="goToPage($event)"
+    ></app-page-navigation>
+  </section>
+</section>

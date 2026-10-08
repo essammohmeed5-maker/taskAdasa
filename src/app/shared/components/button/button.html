@@ -1,0 +1,9 @@
+<a
+  [routerLink]="routerLink"
+  class="shared-btn"
+  [class.primary]="variant === 'primary'"
+  [class.secondary]="variant === 'secondary'"
+  [class.outline]="variant === 'outline'"
+>
+  <ng-content></ng-content>
+</a>

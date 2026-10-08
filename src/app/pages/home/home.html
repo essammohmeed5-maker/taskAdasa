@@ -1,0 +1,265 @@
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+
+      <app-section-label text="مرحباً بك في عدسة"></app-section-label>
+
+      <h1>
+        اكتشف
+        <span>فن</span>
+        <br />
+        التصوير الفوتوغرافي
+      </h1>
+
+      <p>
+        انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير.
+      </p>
+
+      <div class="hero-actions">
+
+        <app-button routerLink="/blog" variant="primary">
+          <span>استكشف المقالات</span>
+          <i class="fa-solid fa-arrow-left"></i>
+        </app-button>
+
+        <app-button routerLink="/about" variant="secondary">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>اعرف المزيد</span>
+        </app-button>
+
+      </div>
+
+      <div class="hero-stats">
+
+        <div class="stat-card">
+          <i class="fa-solid fa-newspaper"></i>
+          <p>+50</p>
+          <span>مقالة</span>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-users"></i>
+          <p>+10ألف</p>
+          <span>قارئ</span>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-folder-open"></i>
+          <p>4</p>
+          <span>تصنيفات</span>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-pen-nib"></i>
+          <p>6</p>
+          <span>كاتب</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Featured Posts -->
+
+<section class="featured">
+
+  <div class="featured-header">
+
+    <div>
+      <app-section-label text="مميز"></app-section-label>
+
+      <h2>مقالات مختارة</h2>
+
+      <p>محتوى منتقى لبدء رحلة تعلمك</p>
+    </div>
+
+    <a routerLink="/blog" class="featured-all">
+      <span>عرض الكل</span>
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+  </div>
+
+
+  <div class="featured-list">
+
+    @for (post of featuredPosts; track post.id) {
+
+      <article class="featured-card">
+
+        <a
+          [routerLink]="['/blog', post.id]"
+          class="featured-link"
+        >
+
+          <!-- Image -->
+
+          <div class="featured-image">
+
+            <img
+              [src]="post.image"
+              [alt]="post.title"
+            >
+
+            <div class="featured-overlay"></div>
+
+            <span class="featured-badge">
+              <i class="fa-solid fa-star"></i>
+              مميز
+            </span>
+
+          </div>
+
+
+          <!-- Content -->
+
+          <div class="featured-content">
+
+            <div class="featured-meta">
+
+              <span class="featured-category">
+                {{ post.category }}
+              </span>
+
+              <span class="featured-time">
+                <i class="fa-regular fa-clock"></i>
+                {{ post.readTime }}
+              </span>
+
+            </div>
+
+
+            <h2>
+              {{ post.title }}
+            </h2>
+
+
+            <p>
+              {{ post.excerpt }}
+            </p>
+
+
+            <div class="featured-footer">
+
+              <div class="featured-author">
+
+                <img
+                  [src]="post.author.avatar"
+                  [alt]="post.author.name"
+                >
+
+                <div>
+                  <strong>{{ post.author.name }}</strong>
+                  <span>{{ post.date }}</span>
+                </div>
+
+              </div>
+
+
+              <span class="featured-read">
+                اقرأ المقال
+                <i class="fa-solid fa-arrow-left"></i>
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+      </article>
+
+    }
+
+  </div>
+
+</section>
+
+
+<section class="categories">
+
+  <div class="categories-header">
+
+    <app-section-label text="التصنيفات"></app-section-label>
+
+    <h2>استكشف حسب الموضوع</h2>
+
+    <p>اعثر على محتوى مصمم حسب اهتماماتك</p>
+
+  </div>
+
+  <div class="categories-grid">
+
+    @for (category of categories; track category.name) {
+
+      <a
+        routerLink="/blog"
+        class="category-card"
+      >
+
+        <div class="category-gradient"></div>
+
+        <div class="category-content">
+
+          <div class="category-icon">
+            <i class="fa-solid {{ category.icon }}"></i>
+          </div>
+
+          <h3>{{ category.name }}</h3>
+
+          <p>{{ category.count }} مقالة</p>
+
+          <div class="category-arrow">
+            <i class="fa-solid fa-arrow-left"></i>
+          </div>
+
+        </div>
+
+      </a>
+
+    }
+
+  </div>
+
+</section>
+
+
+<section class="latest">
+
+  <div class="latest-header">
+
+    <div>
+
+      <app-section-label text="الأحدث"></app-section-label>
+
+      <h2>أحدث المقالات</h2>
+
+      <p>محتوى جديد طازج من المطبعة</p>
+
+    </div>
+
+    <a routerLink="/blog" class="latest-all">
+      عرض جميع المقالات
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+  </div>
+
+  <div class="latest-grid">
+
+    @for (post of latestPosts; track post.id) {
+
+      <app-post-card
+        [post]="post"
+      ></app-post-card>
+
+    }
+
+  </div>
+
+</section>
+
+<app-news></app-news>

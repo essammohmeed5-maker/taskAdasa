@@ -1,0 +1,122 @@
+<nav class="navbar">
+
+  <div class="navbar-container">
+
+    <!-- Logo -->
+    <a routerLink="/" class="logo">
+
+      <div class="logo-image">
+        <img
+          src="https://adasa-psi.vercel.app/assets/logo-GdqARQRt.png"
+          alt="Photography Logo"
+        >
+      </div>
+
+      <div class="logo-text">
+        <span>عدسة</span>
+        <small>عالم التصوير الفوتوغرافي</small>
+      </div>
+
+    </a>
+
+
+    <div class="desktop-nav">
+
+      <div class="nav-links">
+
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          الرئيسية
+        </a>
+
+        <a
+          routerLink="/blog"
+          routerLinkActive="active"
+        >
+          المدونة
+        </a>
+
+        <a
+          routerLink="/about"
+          routerLinkActive="active"
+        >
+          من نحن
+        </a>
+
+      </div>
+
+    </div>
+
+    
+    <div class="nav-actions">
+
+      <button class="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <a routerLink="/blog" class="read-btn">
+        ابدأ القراءة
+      </a>
+
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="menu-btn"
+      (click)="toggleMenu()"
+    >
+      <i
+        class="fa-solid"
+        [class.fa-bars]="!menuOpen"
+        [class.fa-xmark]="menuOpen"
+      ></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Navigation -->
+  @if (menuOpen) {
+
+    <div class="mobile-menu">
+
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+      >
+        الرئيسية
+      </a>
+
+      <a
+        routerLink="/blog"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        المدونة
+      </a>
+
+      <a
+        routerLink="/about"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        من نحن
+      </a>
+
+      <a
+        routerLink="/blog"
+        class="mobile-read-btn"
+        (click)="closeMenu()"
+      >
+        ابدأ القراءة
+      </a>
+
+    </div>
+
+  }
+
+</nav>
